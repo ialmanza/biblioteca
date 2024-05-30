@@ -1,0 +1,60 @@
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  background-color: #fff; /* Puedes ajustar el color de fondo según tu preferencia */
+  transition: 0.3s; /* Transición suave para las animaciones */
+  overflow: hidden; /* Asegura que los contenidos internos no se desborden */
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* Aumenta la sombra al pasar el mouse */
+ }
+
+ /* Estilos para el formulario dentro de la tarjeta */
+.form-group {
+  margin-bottom: 15px; /* Añade margen entre los grupos de formulario */
+ }
+
+ /* Estilos para los campos de entrada del formulario */
+ .form-control {
+  border-radius: 5px; /* Redondea las esquinas de los campos de entrada */
+  border: 1px solid #ced4da; /* Establece un borde para los campos de entrada */
+ }
+
+.form-card {
+  position: sticky; /* Permite que la tarjeta se "pegue" al hacer scroll */
+  top: 20px; /* Ajusta la distancia desde la parte superior */
+}
+
+.list-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transition: 0.3s; /* Transición suave para las animaciones */
+  overflow: hidden; /* Asegura que los contenidos internos no se desborden */
+  position: sticky; /* Permite que la tarjeta se "pegue" al hacer scroll */
+  top: 20px; /* Ajusta la distancia desde la parte superior */
+  margin-left: auto; /* Empuja la tarjeta hacia la derecha */
+  background-color: #f8f9fa; /* Color de fondo */
+}
+
+.btn {
+  border-radius: 5px; /* Redondea las esquinas de los botones */
+
+ }
+
+ /* Estilos específicos para el mat-tab-group */
+ mat-tab-group {
+  margin-top: 20px; /* Añade margen en la parte superior del grupo de pestañas */
+ }
+
+ /* Estilos para los títulos de las pestañas */
+ mat-tab-label {
+  font-weight: bold; /* Hace que los títulos de las pestañas sean en negrita */
+ }
+
+ /* Estilos para el contenido de las pestañas */
+ mat-tab-body {
+  padding: 10px; /* Añade padding alrededor del contenido de las pestañas */
+ }
