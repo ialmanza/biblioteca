@@ -1,5 +1,5 @@
 export interface Libro {
-  id: number;
+  id: string;
   titulo: string;
   isbn: string;
   primerautor: string;
@@ -8,6 +8,7 @@ export interface Libro {
   fechapublicacion: string;
   editorial: string;
   genero: string;
-  paginas: number;
+  paginas: string;
   descripcion: string;
+  hide: boolean;
 }

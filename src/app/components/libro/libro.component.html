@@ -3,16 +3,24 @@
     <div class="col-md-10 mx-auto">
     <div class="card mb-2">
       <div class="card-header d-flex justify-content-between align-items-center">
-        {{"header"}}
+        {{libros?.titulo}}
         <div>
-          <button class="btn btn-primary" >Show</button>
-          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-primary" (click)="libros && (libros.hide=!libros.hide)" >Show</button>
+          <button class="btn btn-danger" (click)="deleteLibro(libros!)">Delete</button>
         </div>
 
       </div>
 
-      <div class="card-body" >
-          {{"body"}}
+      <div class="card-body" [hidden]="libros?.hide" >
+          <span>ISBN: {{libros?.isbn}}</span> <br>
+          <span>Primer autor: {{libros?.primerautor}}</span> <br>
+          <span>Segundo autor: {{libros?.segundoautor}}</span> <br>
+          <span>Tercer autor: {{libros?.tercerautor}}</span> <br>
+          <span>Fecha de publicacion: {{libros?.fechapublicacion}}</span> <br>
+          <span>Editorial: {{libros?.editorial}}</span> <br>
+          <span>Genero: {{libros?.genero}}</span> <br>
+          <span>Paginas: {{libros?.paginas}}</span> <br>
+          <span>Campo adicional: {{libros?.descripcion}}</span> <br>
       </div>
 
     </div>
