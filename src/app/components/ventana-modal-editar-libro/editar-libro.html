@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>{{data.titulo}}</h2>
+
+<mat-dialog-content class="mat-typography">
+  <div>
+    <label for="ISBN">ISBN:</label> <br>
+    <input class="form-control" id="ISBN" type="text" placeholder="{{data.isbn}}"/> <br>
+  </div>
+
+  <div>
+    <label for="Primer autor">Primer autor:</label> <br>
+    <input class="form-control" id="Primer autor" type="text" placeholder="{{data.primerautor}}"/> <br>
+  </div>
+
+  <div>
+    <label for="Segundo autor">Segundo autor:</label> <br>
+    <input class="form-control" id="Segundo autor" type="text" placeholder="{{data.segundoautor}}"/> <br>
+  </div>
+
+  <div>
+    <label for="Tercer autor">Tercer autor:</label> <br>
+    <input class="form-control" id="Tercer autor" type="text" placeholder="{{data.tercerautor}}"/> <br>
+  </div>
+
+  <div>
+    <label for="Fecha de publicacion">Fecha de publicacion:</label> <br>
+    <input class="form-control" id="Fecha de publicacion" type="date" placeholder="{{data.fechapublicacion}}"/> <br>
+  </div>
+
+  <div>
+    <label for="Editorial">Editorial:</label> <br>
+    <input class="form-control" id="Editorial" type="text" placeholder="{{data.editorial}}"/> <br>
+  </div>
+
+  <div>
+    <label for="Genero">Genero:</label> <br>
+    <input class="form-control" id="Genero" type="text" placeholder="{{data.genero}}"/> <br>
+  </div>
+
+  <div>
+    <label for="Paginas">Paginas:</label> <br>
+    <input class="form-control" id="Paginas" type="number" placeholder="{{data.paginas}}"/> <br>
+  </div>
+
+  <div>
+    <label for="Campo adicional">Campo adicional:</label> <br>
+    <textarea class="form-control" id="Campo adicional" cols="30" rows="10" placeholder="{{data.descripcion}}"></textarea> <br>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Editar</button>
+</mat-dialog-actions>

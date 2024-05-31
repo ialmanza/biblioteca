@@ -31,6 +31,18 @@ export class LibrosServicioService {
     this.librosSubject.next(storedLibros);
    }
 
+   updateLibro(updatedLibro: Libro) {
+    let storedLibros = this.getLibrosFromLocalStorage();
+    const index = storedLibros.findIndex(libro => libro.id === updatedLibro.id);
+    if (index !== -1) {
+        storedLibros[index] = updatedLibro;
+        this.saveLibrosToLocalStorage(storedLibros);
+        this.librosSubject.next(storedLibros);
+    } else {
+        console.error('PCR not found in local storage.');
+    }
+   }
+
    private loadLibrosFromLocalStorage() {
     const storedLibros = this.getLibrosFromLocalStorage();
     this.librosSubject.next(storedLibros);

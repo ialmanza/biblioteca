@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ListarlibrosComponent } from '../listarlibros/listarlibros.component';
 import { LibrosServicioService } from '../../services/libros-servicio.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-libro',
@@ -12,7 +13,7 @@ import { LibrosServicioService } from '../../services/libros-servicio.service';
 })
 export class CrearLibroComponent {
 
-  constructor(private librosService: LibrosServicioService) {}
+  constructor(private librosService: LibrosServicioService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -48,5 +49,9 @@ export class CrearLibroComponent {
 
     }
 
-
+    onSubmit(event: Event, titulo: HTMLInputElement, isbn: HTMLInputElement, primerautor: HTMLInputElement, segundoautor: HTMLInputElement, tercerautor: HTMLInputElement, fechapublicacion: HTMLInputElement, editorial: HTMLInputElement, genero: HTMLInputElement, paginas: HTMLInputElement, descripcion: HTMLTextAreaElement) {
+      event.preventDefault(); //previene el comportamiento por defecto del formulario
+      this.addLibro(titulo, isbn, primerautor, segundoautor, tercerautor, fechapublicacion, editorial, genero, paginas, descripcion);
+      this.router.navigate(['/listar-libros']);
+    }
 }

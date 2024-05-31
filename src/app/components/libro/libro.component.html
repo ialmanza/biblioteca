@@ -5,8 +5,9 @@
       <div class="card-header d-flex justify-content-between align-items-center">
         {{libros?.titulo}}
         <div>
-          <button class="btn btn-primary" (click)="libros && (libros.hide=!libros.hide)" >Show</button>
+          <button class="btn btn-primary" (click)="openDialog(libros!)" >Show</button>
           <button class="btn btn-danger" (click)="deleteLibro(libros!)">Delete</button>
+          <button class="btn btn-success" (click)="openEditDialog(libros!)">Editar</button>
         </div>
 
       </div>
