@@ -18,3 +18,46 @@
 .icon-container button:hover .icon {
   fill: #007bff; /* Cambia el color al pasar el ratón si lo deseas */
 }
+
+/* Styles for pagination controls */
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.page-size-options {
+  display: flex;
+  align-items: center;
+}
+
+.page-size-options label {
+  margin-right: 10px;
+}
+
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.pagination-buttons button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #007bff;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-buttons button:disabled {
+  background-color: #d0d0d0;
+  border: 1px solid #d0d0d0;
+  cursor: not-allowed;
+}
+
+.pagination-buttons button:hover:not(:disabled) {
+  background-color: #0056b3;
+}

@@ -1,6 +1,12 @@
 <h2 mat-dialog-title>{{data.titulo}}</h2>
 
 <mat-dialog-content class="mat-typography">
+
+  <div>
+    <label for="titulo">Título:</label> <br>
+    <input class="form-control" id="titulo" type="text" placeholder="{{data.titulo}}" [(ngModel)]="data.titulo" name="titulo"/> <br>
+  </div>
+
   <div>
     <label for="ISBN">ISBN:</label> <br>
     <input class="form-control" id="ISBN" type="text" placeholder="{{data.isbn}}" [(ngModel)]="data.isbn" name="isbn"/> <br>
