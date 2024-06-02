@@ -9,10 +9,8 @@ import {
   MAT_DIALOG_DATA
 } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import { Libro } from '../../models/Libro';
 
-/**
- * @title Dialog Animations
- */
 @Component({
   selector: 'app-ventana-modal',
   styleUrl: './ventana-modal.component.css',
@@ -41,7 +39,7 @@ export class DialogComponent {
   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
 })
 export class DialogAnimationsExampleDialog {
-  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: Libro) {}
 
   onNoClick(): void {
     this.dialogRef.close(false);

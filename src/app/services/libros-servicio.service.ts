@@ -39,7 +39,7 @@ export class LibrosServicioService {
         this.saveLibrosToLocalStorage(storedLibros);
         this.librosSubject.next(storedLibros);
     } else {
-        console.error('PCR not found in local storage.');
+        console.error('Book not found in local storage.');
     }
    }
 

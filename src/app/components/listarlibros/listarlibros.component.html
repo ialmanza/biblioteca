@@ -1,1 +1,26 @@
-<app-libro *ngFor="let libro of libros" [libros]="libro"></app-libro>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+          <input
+          type="text"
+          class="form-control"
+          name="searchTerm"
+          placeholder="Buscar..."
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="filter($event)"
+        >
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ng-container *ngFor="let libro of filteredLibros">
+        <app-libro *ngIf="libro.titulo.includes(searchTerm)" [libros]="libro"></app-libro>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+
