@@ -1,0 +1,54 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+          <input
+          type="text"
+          class="form-control"
+          name="searchTerm"
+          placeholder="Buscar..."
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="filter($event)"
+        >
+      </div>
+    </div>
+  </div> <br><br>
+  <div class="row">
+    <div class="col">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Título</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">Primer autor</th>
+            <th scope="col">Segundo autor</th>
+            <th scope="col">Tercer autor</th>
+            <th scope="col">Fecha de publicacion</th>
+            <th scope="col">Editorial</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Paginas</th>
+            <th scope="col">Campo adicional</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let libro of filteredLibros">
+            <td>{{libro.titulo}}</td>
+            <td>{{libro.isbn}}</td>
+            <td>{{libro.primerautor}}</td>
+            <td>{{libro.segundoautor}}</td>
+            <td>{{libro.tercerautor}}</td>
+            <td>{{libro.fechapublicacion}}</td>
+            <td>{{libro.editorial}}</td>
+            <td>{{libro.genero}}</td>
+            <td>{{libro.paginas}}</td>
+            <td>{{libro.descripcion}}</td>
+          </tr>
+
+        </tbody>
+
+
+      </table>
+    </div>
+  </div>
+

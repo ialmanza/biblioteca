@@ -52,6 +52,6 @@ export class CrearLibroComponent {
     onSubmit(event: Event, titulo: HTMLInputElement, isbn: HTMLInputElement, primerautor: HTMLInputElement, segundoautor: HTMLInputElement, tercerautor: HTMLInputElement, fechapublicacion: HTMLInputElement, editorial: HTMLInputElement, genero: HTMLInputElement, paginas: HTMLInputElement, descripcion: HTMLTextAreaElement) {
       event.preventDefault(); //previene el comportamiento por defecto del formulario
       this.addLibro(titulo, isbn, primerautor, segundoautor, tercerautor, fechapublicacion, editorial, genero, paginas, descripcion);
-      this.router.navigate(['/listar-libros']);
+      this.router.navigate(['/listar-tabla']);
     }
 }
