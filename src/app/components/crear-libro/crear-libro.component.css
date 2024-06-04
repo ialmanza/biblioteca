@@ -58,3 +58,45 @@
  mat-tab-body {
   padding: 10px; /* Añade padding alrededor del contenido de las pestañas */
  }
+
+ /* Estilo para el elemento select */
+select.form-control {
+  border-radius: 5px; /* Redondea las esquinas del select */
+  border: 1px solid #ced4da; /* Establece un borde para el select */
+  padding: 10px; /* Añade padding para que el contenido no esté pegado a los bordes */
+  background-color: #fff; /* Fondo blanco para el select */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transiciones suaves para el borde y la sombra */
+}
+
+/* Estilo para el select al hacer focus */
+select.form-control:focus {
+  border-color: #80bdff; /* Cambia el color del borde al enfocarse */
+  box-shadow: 0 0 5px rgba(128, 189, 255, 0.5); /* Añade una sombra al enfocarse */
+  outline: none; /* Quita el borde predeterminado del navegador */
+}
+
+/* Estilo para las opciones dentro del select */
+select.form-control option {
+  padding: 10px; /* Añade padding a las opciones */
+  background-color: #fff; /* Fondo blanco para las opciones */
+}
+
+/* Cambia el color de fondo y el color del texto al pasar el ratón sobre las opciones */
+select.form-control option:hover {
+  background-color: #f1f1f1; /* Color de fondo al pasar el ratón */
+}
+
+/* Asegura que el select tenga un margen inferior consistente con otros elementos del formulario */
+.form-group select.form-control {
+  margin-bottom: 15px; /* Añade margen inferior */
+}
+
+/* Añade un margen inferior al select */
+select {
+  margin-bottom: 15px;
+}
+
+/* Ajusta el ancho del select para que sea igual al de otros campos de formulario */
+select.form-control {
+  width: 100%;
+}
