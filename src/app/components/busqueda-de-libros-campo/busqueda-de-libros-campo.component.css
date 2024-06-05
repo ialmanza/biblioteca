@@ -97,6 +97,23 @@
 .table th:hover {
   color: blue;
 }
+
+.clasep{
+  border: 1px solid #ddd;
+  padding: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  border: none;
+
+}
+
+.clasep:hover {
+  color: blue;
+}
+
 .header-actions {
   display: flex;
   justify-content: center;
@@ -169,6 +186,7 @@
   outline: none;
   ring: 4px; /* focus:ring-4 */
   ring-color: #93c5fd; /* focus:ring-blue-300 */
+
 }
 
 #dropdownHoverButton .svg-icon {
@@ -468,3 +486,127 @@ body.dark #dropdownHoverEditorial ul li a:hover {
   }
 }
 
+.tree-node:hover {
+  /* background-color: rgb(55, 55, 193); */
+  color: blue; /* Esto es opcional para cambiar el color del texto cuando se hace hover */
+}
+
+.tree-node:focus {
+  background-color: rgb(55, 55, 193);
+  color: white; /* Esto es opcional para cambiar el color del texto cuando se hace hover */
+}
+
+/* .tree-node {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+
+.tree-node:hover .dropdown-menu,
+.tree-node:focus .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  display: none;
+  width: 10rem;
+  background-color: #fff;
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.dropdown-menu ul {
+  padding: 0.5rem 0;
+  margin: 0;
+  list-style: none;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.dropdown-menu ul li {
+  display: block;
+}
+
+.dropdown-menu ul li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-menu ul li a:hover {
+  background-color: #f3f4f6;
+} */
+
+/* Dark mode */
+/* body.dark .dropdown-menu {
+  background-color: #374151;
+  color: #d1d5db;
+}
+
+body.dark .dropdown-menu ul li a:hover {
+  background-color: #4b5563;
+  color: #fff;
+}
+
+.custom-tree {
+  font-size: 14px;
+  color: #333;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+}
+
+.mat-tree-line-vertical::before,
+.mat-tree-line-horizontal::after {
+  background-color: #ccc;
+}
+
+.mat-tree-line-vertical::before {
+  height: 100%;
+}
+
+.mat-tree-line-horizontal::after {
+  width: 100%;
+}
+
+.mat-tree-line-vertical::before,
+.mat-tree-line-horizontal::after {
+  content: '';
+  position: absolute;
+}
+
+.mat-tree-line-vertical::before {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid currentColor;
+}
+
+.mat-tree-line-horizontal::after {
+  right: 50%;
+  top: 0;
+  bottom: 0;
+  border-top: 1px solid currentColor;
+}
+
+.mat-tree-node-content-wrapper:hover {
+  background-color: #eee;
+}
+
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+} */

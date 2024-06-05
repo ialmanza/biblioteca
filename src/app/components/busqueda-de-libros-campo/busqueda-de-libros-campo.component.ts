@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LibroComponent } from "../libro/libro.component";
 import { LibrosServicioService } from '../../services/libros-servicio.service';
 import { Libro } from '../../models/Libro';
@@ -19,6 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
 interface FoodNode {
   name: string;
   children?: FoodNode[];
+  showMenu?: boolean; // Añadido
 }
 
 const TREE_DATA: FoodNode[] = [
@@ -33,6 +34,9 @@ const TREE_DATA: FoodNode[] = [
         name: 'Terror'
       },
       {
+        name: 'Aventuras'
+      },
+      {
         name: 'Comedia'
       },
       {
@@ -43,8 +47,8 @@ const TREE_DATA: FoodNode[] = [
         children: [{name: 'Novela Inglesa'}, {name: 'Otras'}],
       },
       {
-        name: 'Fruta',
-        children: [{name: 'Manzana'}, {name: 'Pera'}, {name: 'Naranja'}],
+        name: 'Animados',
+        children: [{name: 'Anime'}, {name: '3D'}],
       }
 
     ],
@@ -73,6 +77,7 @@ export class BusquedaDeLibrosCampoComponent {
   totalItems = 0;
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource<FoodNode>();
+  shoeMenu?: boolean = false;
 
   constructor(private librosServicio: LibrosServicioService, private dialog: MatDialog) {
     this.dataSource.data = TREE_DATA;
@@ -169,5 +174,13 @@ export class BusquedaDeLibrosCampoComponent {
     this.totalItems = this.filteredLibros.length;
     this.currentPage = 0;
     this.updateDisplayedLibros();
+  }
+
+  showMenu(node: FoodNode) {
+    node.showMenu = true;
+  }
+
+  hideMenu(node: FoodNode) {
+    node.showMenu = false;
   }
 }
