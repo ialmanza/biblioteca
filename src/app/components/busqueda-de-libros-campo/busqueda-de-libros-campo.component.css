@@ -1,7 +1,7 @@
-
 .icon-container {
   display: flex;
   align-items: center;
+  margin: 0 5px;
 }
 
 .icon {
@@ -20,7 +20,6 @@
   fill: #007bff;
 }
 
-
 .pagination-controls {
   display: flex;
   justify-content: space-between;
@@ -28,18 +27,13 @@
   margin-top: 20px;
 }
 
-.page-size-options {
+.page-size-options, .pagination-buttons {
   display: flex;
   align-items: center;
 }
 
 .page-size-options label {
   margin-right: 10px;
-}
-
-.pagination-buttons {
-  display: flex;
-  align-items: center;
 }
 
 .pagination-buttons button {
@@ -67,47 +61,52 @@
 .container {
   display: flex;
   flex-direction: column;
-  padding: 2px; /* primero estaba en 20 */
+  padding: 2px;
 }
+
 .row {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 15px;
 }
+
 .col {
   flex: 1 1 100%;
   padding: 10px;
 }
+
 .form-group {
   display: flex;
   justify-content: left;
 }
+
 .form-control {
   width: 100%;
   max-width: 600px;
 }
+
 .table {
   width: 100%;
   border-collapse: collapse;
 }
+
 .table th, .table td {
   border: 1px solid #ddd;
   padding: 8px;
 }
+
 .table th:hover {
   color: blue;
 }
 
-.clasep{
-  border: 1px solid #ddd;
+.clasep {
+  border: none;
   padding: 8px;
   cursor: pointer;
   text-decoration: none;
   color: black;
   font-weight: bold;
   transition: color 0.3s ease;
-  border: none;
-
 }
 
 .clasep:hover {
@@ -118,27 +117,12 @@
   display: flex;
   justify-content: center;
 }
+
 .skills-list {
   display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
-}
-.icon-container {
-  margin: 0 5px;
-}
-.pagination-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-}
-.page-size-options, .pagination-buttons {
-  display: flex;
-  align-items: center;
-}
-.pagination-buttons button {
-  margin: 0 5px;
 }
 
 @media (min-width: 768px) {
@@ -157,7 +141,7 @@
 }
 
 .button-spacing {
-  margin-right: 10px; /* Ajusta este valor según sea necesario */
+  margin-right: 10px;
 }
 
 /* Botón */
@@ -167,267 +151,111 @@
   align-items: center;
   justify-content: center;
   color: #fff;
-  background-color: #1e40af; /* bg-blue-700 */
+  background-color: #1e40af;
   border: none;
-  border-radius: 0.375rem; /* rounded-md */
-  padding: 0.375rem 0.75rem; /* px-3 py-1.5 */
-  font-size: 0.75rem; /* text-xs */
-  font-weight: 500; /* font-medium */
+  border-radius: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 #dropdownHoverButton:hover {
-  background-color: #1d4ed8; /* hover:bg-blue-800 */
+  background-color: #1d4ed8;
 }
 
 #dropdownHoverButton:focus {
   outline: none;
-  ring: 4px; /* focus:ring-4 */
-  ring-color: #93c5fd; /* focus:ring-blue-300 */
-
 }
 
 #dropdownHoverButton .svg-icon {
-  margin-left: 0.5rem; /* ms-2 */
-  width: 0.5rem; /* w-2 */
-  height: 0.5rem; /* h-2 */
+  margin-left: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
 }
 
 /* Dropdown */
-#dropdownHover {
+#dropdownHover, #dropdownHoverEditorial {
   position: absolute;
   top: 100%;
   left: 0;
   z-index: 10;
-  display: none; /* hidden */
-  width: 10rem; /* w-40 */
-  background-color: #fff; /* bg-white */
-  border-radius: 0.375rem; /* rounded-md */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow */
+  display: none;
+  width: 10rem;
+  background-color: #fff;
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: opacity 0.3s ease;
 }
 
-#dropdownHover ul {
-  padding: 0.5rem 0; /* py-2 */
+#dropdownHover ul, #dropdownHoverEditorial ul {
+  padding: 0.5rem 0;
   margin: 0;
   list-style: none;
-  font-size: 0.875rem; /* text-sm */
-  color: #374151; /* text-gray-700 */
+  font-size: 0.875rem;
+  color: #374151;
 }
 
-#dropdownHover ul li {
+#dropdownHover ul li, #dropdownHoverEditorial ul li {
   display: block;
 }
 
-#dropdownHover ul li a {
+#dropdownHover ul li a, #dropdownHoverEditorial ul li a {
   display: block;
-  padding: 0.5rem 1rem; /* px-4 py-2 */
+  padding: 0.5rem 1rem;
   color: inherit;
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
 
-#dropdownHover ul li a:hover {
-  background-color: #f3f4f6; /* hover:bg-gray-100 */
+#dropdownHover ul li a:hover, #dropdownHoverEditorial ul li a:hover {
+  background-color: #f3f4f6;
 }
 
-#dropdownHoverButton:hover + #dropdownHover,
-#dropdownHover:hover {
+#dropdownHoverButton:hover + #dropdownHover, #dropdownHover:hover,
+#dropdownHoverButton:hover + #dropdownHoverEditorial, #dropdownHoverEditorial:hover {
   display: block;
 }
 
 /* Dark mode */
-body.dark #dropdownHover {
-  background-color: #374151; /* dark:bg-gray-700 */
-  color: #d1d5db; /* dark:text-gray-200 */
+body.dark #dropdownHover, body.dark #dropdownHoverEditorial {
+  background-color: #374151;
+  color: #d1d5db;
 }
 
-body.dark #dropdownHover ul li a:hover {
-  background-color: #4b5563; /* dark:hover:bg-gray-600 */
-  color: #fff; /* dark:hover:text-white */
+body.dark #dropdownHover ul li a:hover, body.dark #dropdownHoverEditorial ul li a:hover {
+  background-color: #4b5563;
+  color: #fff;
 }
 
-/* PARA EL HOVER DEl DROPDOWN EDITORIAL */
-
-/* Dropdown */
-#dropdownHoverEditorial {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 10;
-  display: none; /* hidden */
-  width: 10rem; /* w-40 */
-  background-color: #fff; /* bg-white */
-  border-radius: 0.375rem; /* rounded-md */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow */
-  overflow: hidden;
-  transition: opacity 0.3s ease;
-}
-
-#dropdownHoverEditorial ul {
-  padding: 0.5rem 0; /* py-2 */
-  margin: 0;
-  list-style: none;
-  font-size: 0.875rem; /* text-sm */
-  color: #374151; /* text-gray-700 */
-}
-
-#dropdownHoverEditorial ul li {
-  display: block;
-}
-
-#dropdownHoverEditorial ul li a {
-  display: block;
-  padding: 0.5rem 1rem; /* px-4 py-2 */
-  color: inherit;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-#dropdownHoverEditorial ul li a:hover {
-  background-color: #f3f4f6; /* hover:bg-gray-100 */
-}
-
-#dropdownHoverButton:hover + #dropdownHoverEditorial,
-#dropdownHoverEditorial:hover {
-  display: block;
-}
-
-/* Dark mode */
-body.dark #dropdownHoverEditorial {
-  background-color: #374151; /* dark:bg-gray-700 */
-  color: #d1d5db; /* dark:text-gray-200 */
-}
-
-body.dark #dropdownHoverEditorial ul li a:hover {
-  background-color: #4b5563; /* dark:hover:bg-gray-600 */
-  color: #fff; /* dark:hover:text-white */
-}
-
+/* Custom tree */
 .custom-tree {
-    &.mat-tree-node {
-      font-size: 14px;
-      color: #333;
-      border-radius: 4px;
-      background-color: #f5f5f5;
-    }
+  font-size: 14px;
+  color: #333;
+  border-radius: 4px;
+}
 
-    &.mat-tree-line-vertical::before,
-    &.mat-tree-line-horizontal::after {
-      background-color: #ccc;
-    }
+.custom-tree .mat-tree-line-vertical::before,
+.custom-tree .mat-tree-line-horizontal::after {
+  background-color: #ccc;
+}
 
-    &.mat-tree-line-vertical::before {
-      height: 100%;
-    }
+.custom-tree .mat-tree-line-vertical::before {
+  height: 100%;
+}
 
-    &.mat-tree-line-horizontal::after {
-      width: 100%;
-    }
+.custom-tree .mat-tree-line-horizontal::after {
+  width: 100%;
+}
 
-    &.mat-tree-line-vertical::before,
-    &.mat-tree-line-horizontal::after {
-      content: '';
-      position: absolute;
-    }
+.custom-tree .mat-tree-node-content-wrapper:hover {
+  background-color: #eee;
+}
 
-    &.mat-tree-line-vertical::before {
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      border-left: 1px solid currentColor;
-    }
-
-    &.mat-tree-line-horizontal::after {
-      right: 50%;
-      top: 0;
-      bottom: 0;
-      border-top: 1px solid currentColor;
-    }
-
-    &.mat-tree-node-content-wrapper:hover {
-      background-color: #eee;
-    }
-  }
-
-  .example-tree-invisible {
-    display: none;
-  }
-
-  .example-tree ul,
-  .example-tree li {
-    margin-top: 0;
-    margin-bottom: 0;
-    list-style-type: none;
-  }
-
-  /*
-   * This padding sets alignment of the nested nodes.
-   */
-  .example-tree .mat-nested-tree-node div[role=group] {
-    padding-left: 40px;
-  }
-
-  /*
-   * Padding for leaf nodes.
-   * Leaf nodes need to have padding so as to align with other non-leaf nodes
-   * under the same parent.
-   */
-  .example-tree div[role=group] > .mat-tree-node {
-    padding-left: 40px;
-  }
-
-    /* estilos phind para el buscador */
-
-    .custom-tree {
-      &.mat-tree-node {
-        font-size: 14px;
-        color: #333;
-        border-radius: 4px;
-        background-color: #f5f5f5;
-      }
-
-      &.mat-tree-line-vertical::before,
-      &.mat-tree-line-horizontal::after {
-        background-color: #ccc;
-      }
-
-      &.mat-tree-line-vertical::before {
-        height: 100%;
-      }
-
-      &.mat-tree-line-horizontal::after {
-        width: 100%;
-      }
-
-      &.mat-tree-line-vertical::before,
-      &.mat-tree-line-horizontal::after {
-        content: '';
-        position: absolute;
-      }
-
-      &.mat-tree-line-vertical::before {
-        left: 50%;
-        top: 0;
-        bottom: 0;
-        border-left: 1px solid currentColor;
-      }
-
-      &.mat-tree-line-horizontal::after {
-        right: 50%;
-        top: 0;
-        bottom: 0;
-        border-top: 1px solid currentColor;
-      }
-
-      &.mat-tree-node-content-wrapper:hover {
-        background-color: #eee;
-      }
-    }
-/* Tree Visibility */
+/* Tree visibility */
 .example-tree-invisible {
   display: none;
 }
@@ -440,11 +268,7 @@ body.dark #dropdownHoverEditorial ul li a:hover {
 }
 
 /* Nested Nodes */
-.example-tree .mat-nested-tree-node div[role=group] {
-  padding-left: 40px;
-}
-
-/* Leaf Nodes */
+.example-tree .mat-nested-tree-node div[role=group],
 .example-tree div[role=group] > .mat-tree-node {
   padding-left: 40px;
 }
@@ -459,154 +283,12 @@ body.dark #dropdownHoverEditorial ul li a:hover {
   display: block;
 }
 
-/* Search Styles */
-.custom-tree {
-  &.mat-tree-node {
-    font-size: 14px;
-    color: #333;
-    border-radius: 4px;
-    background-color: #f5f5f5;
-  }
-
-  &.mat-tree-line-vertical::before,
-  &.mat-tree-line-horizontal::after {
-    background-color: #ccc;
-  }
-
-  &.mat-tree-line-vertical::before {
-    height: 100%;
-  }
-
-  &.mat-tree-line-horizontal::after {
-    width: 100%;
-  }
-
-  &.mat-tree-node-content-wrapper:hover {
-    background-color: #eee;
-  }
-}
-
+/* Tree node */
 .tree-node:hover {
-  /* background-color: rgb(55, 55, 193); */
-  color: blue; /* Esto es opcional para cambiar el color del texto cuando se hace hover */
+  color: blue;
 }
 
 .tree-node:focus {
   background-color: rgb(55, 55, 193);
-  color: white; /* Esto es opcional para cambiar el color del texto cuando se hace hover */
+  color: white;
 }
-
-/* .tree-node {
-  cursor: pointer;
-  position: relative;
-  display: inline-block;
-}
-
-.tree-node:hover .dropdown-menu,
-.tree-node:focus .dropdown-menu {
-  display: block;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 10;
-  display: none;
-  width: 10rem;
-  background-color: #fff;
-  border-radius: 0.375rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: opacity 0.3s ease;
-}
-
-.dropdown-menu ul {
-  padding: 0.5rem 0;
-  margin: 0;
-  list-style: none;
-  font-size: 0.875rem;
-  color: #374151;
-}
-
-.dropdown-menu ul li {
-  display: block;
-}
-
-.dropdown-menu ul li a {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: inherit;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.dropdown-menu ul li a:hover {
-  background-color: #f3f4f6;
-} */
-
-/* Dark mode */
-/* body.dark .dropdown-menu {
-  background-color: #374151;
-  color: #d1d5db;
-}
-
-body.dark .dropdown-menu ul li a:hover {
-  background-color: #4b5563;
-  color: #fff;
-}
-
-.custom-tree {
-  font-size: 14px;
-  color: #333;
-  border-radius: 4px;
-  background-color: #f5f5f5;
-}
-
-.mat-tree-line-vertical::before,
-.mat-tree-line-horizontal::after {
-  background-color: #ccc;
-}
-
-.mat-tree-line-vertical::before {
-  height: 100%;
-}
-
-.mat-tree-line-horizontal::after {
-  width: 100%;
-}
-
-.mat-tree-line-vertical::before,
-.mat-tree-line-horizontal::after {
-  content: '';
-  position: absolute;
-}
-
-.mat-tree-line-vertical::before {
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  border-left: 1px solid currentColor;
-}
-
-.mat-tree-line-horizontal::after {
-  right: 50%;
-  top: 0;
-  bottom: 0;
-  border-top: 1px solid currentColor;
-}
-
-.mat-tree-node-content-wrapper:hover {
-  background-color: #eee;
-}
-
-.example-tree-invisible {
-  display: none;
-}
-
-.example-tree ul,
-.example-tree li {
-  margin-top: 0;
-  margin-bottom: 0;
-  list-style-type: none;
-} */
