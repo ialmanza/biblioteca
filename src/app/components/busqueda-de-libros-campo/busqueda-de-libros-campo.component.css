@@ -168,6 +168,8 @@
 
 #dropdownHoverButton:focus {
   outline: none;
+  ring: 4px;
+  ring-color: #93c5fd;
 }
 
 #dropdownHoverButton .svg-icon {
@@ -236,6 +238,7 @@ body.dark #dropdownHover ul li a:hover, body.dark #dropdownHoverEditorial ul li 
   font-size: 14px;
   color: #333;
   border-radius: 4px;
+  background-color: #f5f5f5;
 }
 
 .custom-tree .mat-tree-line-vertical::before,
