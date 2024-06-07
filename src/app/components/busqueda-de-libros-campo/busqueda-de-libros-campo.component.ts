@@ -5,7 +5,6 @@ import { Libro } from '../../models/Libro';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from '../../pipes/filter.pipe';
-import { DialogContentExampleDialog } from "../ventana-modal-mostrar-libro/ventana-modal-mostrar-libro.component";
 import { DialogContentEditExampleDialog } from '../ventana-modal-editar-libro/ventana-modal-editar-libro.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAnimationsExampleDialog } from '../ventana-modal/ventana-modal.component';
@@ -14,6 +13,7 @@ import {NestedTreeControl} from '@angular/cdk/tree';
 import {MatTreeNestedDataSource, MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import * as XLSX from 'xlsx';
 
 
 interface FoodNode {
@@ -61,7 +61,7 @@ const TREE_DATA: FoodNode[] = [
     standalone: true,
     templateUrl: './busqueda-de-libros-campo.component.html',
     styleUrl: './busqueda-de-libros-campo.component.css',
-    imports: [LibroComponent, CommonModule, FormsModule, FilterPipe, DialogContentExampleDialog, DialogContentEditExampleDialog, DialogAnimationsExampleDialog,
+    imports: [LibroComponent, CommonModule, FormsModule, FilterPipe, DialogContentEditExampleDialog, DialogAnimationsExampleDialog,
       MatTreeModule, MatIconModule, MatButtonModule],
 })
 export class BusquedaDeLibrosCampoComponent {
@@ -183,4 +183,34 @@ export class BusquedaDeLibrosCampoComponent {
   hideMenu(node: FoodNode) {
     node.showMenu = false;
   }
+
+  mostrarTodos() {
+    this.filteredLibros = this.libros;
+    this.totalItems = this.libros.length;
+    this.currentPage = 0;
+    this.updateDisplayedLibros();
+  }
+
+  exportToExcel(): void {
+    const filteredData = this.filteredLibros.map(libro => {
+      const { titulo, isbn, primerautor, segundoautor, tercerautor, fechapublicacion, editorial, genero, paginas, descripcion, ...rest } = libro;
+      return {
+        Título: titulo,
+        ISBN: isbn,
+        'Primer autor': primerautor,
+        'Segundo autor': segundoautor,
+        'Tercer autor': tercerautor,
+        'Fecha de publicación': fechapublicacion,
+        Editorial: editorial,
+        Género: genero,
+        Páginas: paginas,
+        'Campo adicional': descripcion
+      };
+    });
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(filteredData);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Libros');
+    XLSX.writeFile(wb, 'Libros.xlsx');
+  }
+
 }

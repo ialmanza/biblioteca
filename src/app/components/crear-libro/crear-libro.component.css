@@ -41,6 +41,7 @@
 
 .btn {
   border-radius: 5px; /* Redondea las esquinas de los botones */
+  transition: border-color 0.3s, box-shadow 0.3s;
 
  }
 
@@ -99,4 +100,20 @@ select {
 /* Ajusta el ancho del select para que sea igual al de otros campos de formulario */
 select.form-control {
   width: 100%;
+}
+
+.custom-error {
+  color: #ec1a13;
+  border: 1px solid #d9534f;
+  background-color: #f9e2e2;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 5px;
+  font-size: 0.875em;
+}
+
+.custom-alert {
+  background-color: #f9e2e2;
+  border-color: #d9534f;
+  color: #ec1a13;
 }

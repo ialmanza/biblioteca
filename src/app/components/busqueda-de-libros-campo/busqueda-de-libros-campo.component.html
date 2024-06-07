@@ -142,11 +142,12 @@
           </div>
         </mat-nested-tree-node>
       </mat-tree> -->
-
+      <p (click)="mostrarTodos()" class="clasep">Mostrar Todos</p>
     </div>
   </div> <br><br>
   <div class="row">
     <div class="col">
+      <button class="btn btn-primary mb-3" (click)="exportToExcel()">Exportar a Excel</button>
       <table class="table table-striped">
         <thead>
           <tr>
