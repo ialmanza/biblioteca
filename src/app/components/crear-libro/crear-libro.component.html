@@ -1,48 +1,4 @@
-<!-- <div>
-  <div class="container p-4">
-    <div class="row">
-      <div class="col-md-9 mx-auto">
-        <div class="card" >
 
-          <form (submit)="onSubmit($event,titulo,isbn, primerautor, segundoautor, tercerautor, fechapublicacion, editorial, genero, paginas,descripcion)">
-            <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-              {{ errorMessage }}
-            </div>
-            <div class="form-group p-2 ">
-              <input type="text" class="form-control" placeholder="Título" #titulo> <br>
-              <input type="number" class="form-control" placeholder="ISBN" #isbn> <br>
-              <input type="text" class="form-control" placeholder="Primer autor" #primerautor> <br>
-              <input type="text" class="form-control" placeholder="Segundo autor" #segundoautor> <br>
-              <input type="text" class="form-control" placeholder="Tercer autor" #tercerautor> <br>
-              <input type="date" class="form-control" placeholder="Fecha de publicacion" #fechapublicacion> <br>
-              <select name="editorialSelect" class="form-control" id=" editorial" #editorial required>
-                <option value="seleccione" disabled selected>Seleccione Editorial</option>
-                <option value="Gente Nueva">Gente Nueva</option>
-                <option value="Fantastic World">Fantastic World</option>
-                <option value="Sonando">Sonando"</option>
-              </select> <br>
-              <select name="generoSelect" class="form-control" id="genero" #genero required>
-                <option value="seleccione" disable selected>Seleccione Genero</option>
-                <option value="Fantasia">Fantasia</option>
-                <option value="Fantasia">Terror</option>
-                <option value="Fantasia">Musical</option>
-                <option value="Aventura"> Aventura</option>
-                <option value="Comedia">Comedia</option>
-              </select> <br>
-              <input type="number" class="form-control" placeholder="Paginas" #paginas> <br>
-              <textarea class="form-control" placeholder="Campo adicional" cols="30" rows="10" #descripcion></textarea> <br>
-               <br><br>
-
-
-              <button type="submit" class="btn btn-primary">Agregar</button>
-            </div>
-
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <div>
   <div class="container p-4">
