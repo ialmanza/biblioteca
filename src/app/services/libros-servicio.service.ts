@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Libro } from '../models/Libro';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -43,18 +44,41 @@ export class LibrosServicioService {
     }
    }
 
-   private loadLibrosFromLocalStorage() {
+  //  private loadLibrosFromLocalStorage() {
+  //   const storedLibros = this.getLibrosFromLocalStorage();
+  //   this.librosSubject.next(storedLibros);
+  // }
+
+  // private getLibrosFromLocalStorage(): Libro[] {
+  //   const storedLibros = localStorage.getItem('libros');
+  //   return storedLibros ? JSON.parse(storedLibros) : [];
+  // }
+
+  // private saveLibrosToLocalStorage(libros: Libro[]) {
+  //   localStorage.setItem('libros', JSON.stringify(libros));
+  // }
+
+  private loadLibrosFromLocalStorage() {
     const storedLibros = this.getLibrosFromLocalStorage();
     this.librosSubject.next(storedLibros);
   }
 
   private getLibrosFromLocalStorage(): Libro[] {
-    const storedLibros = localStorage.getItem('libros');
-    return storedLibros ? JSON.parse(storedLibros) : [];
+    if (typeof localStorage !== 'undefined') {
+      const storedLibros = localStorage.getItem('libros');
+      return storedLibros ? JSON.parse(storedLibros) : [];
+    } else {
+      console.warn('localStorage is not available.');
+      return [];
+    }
   }
 
   private saveLibrosToLocalStorage(libros: Libro[]) {
-    localStorage.setItem('libros', JSON.stringify(libros));
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('libros', JSON.stringify(libros));
+    } else {
+      console.warn('localStorage is not available.');
+    }
   }
 
 }
