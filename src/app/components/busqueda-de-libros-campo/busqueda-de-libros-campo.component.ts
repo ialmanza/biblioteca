@@ -96,11 +96,7 @@ export class BusquedaDeLibrosCampoComponent {
 
   filter(query: string) {
     this.filteredLibros = this.libros.filter(libro =>
-      // libro.titulo.toLowerCase().includes(query.toLowerCase()) ||
-      // libro.primerautor.toLowerCase().includes(query.toLowerCase()) ||
-      // libro.genero.toLowerCase().includes(query.toLowerCase()) ||
-      libro.editorial.toLowerCase().includes(query.toLowerCase())  /*||
-    libro.fechapublicacion.toLowerCase().includes(query.toLowerCase()));*/);
+      libro.editorial && libro.editorial.toLowerCase().includes(query.toLowerCase()));
     this.totalItems = this.filteredLibros.length;
     this.currentPage = 0;
     this.updateDisplayedLibros();
@@ -162,7 +158,13 @@ export class BusquedaDeLibrosCampoComponent {
   search(term: string) {
     console.log(`Searching for: ${term}`);
     this.filteredLibros = this.libros.filter(libro =>
-      libro.editorial && libro.editorial.toLowerCase().includes(term.toLowerCase())
+      libro.editorial && libro.editorial.toLowerCase().includes(term.toLowerCase()) ||
+      libro.fechapublicacion && libro.fechapublicacion.toLowerCase().includes(term.toLowerCase()) ||
+      libro.genero && libro.genero.toLowerCase().includes(term.toLowerCase()) ||
+      libro.primerautor && libro.primerautor.toLowerCase().includes(term.toLowerCase()) ||
+      libro.segundoautor && libro.segundoautor.toLowerCase().includes(term.toLowerCase()) ||
+      libro.tercerautor && libro.tercerautor.toLowerCase().includes(term.toLowerCase()) ||
+      libro.titulo && libro.titulo.toLowerCase().includes(term.toLowerCase())
     );
 
     this.totalItems = this.filteredLibros.length;
