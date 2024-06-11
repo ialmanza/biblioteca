@@ -1,147 +1,33 @@
 <br>
 <div class="container">
   <div class="row">
-    <div class="col">
-
-
-      <!-- <div class="form-group">
-          <input
-          type="text"
-          class="form-control"
-          name="searchTerm"
-          placeholder="Buscar editorial..."
-          [(ngModel)]="searchTerm"
-          (ngModelChange)="filter($event)"
-        >
-      </div>
       <br><br>
-
-      <div class="form-group">
-        <input
-        type="text"
-        class="form-control"
-        name="searchTitulo"
-        placeholder="Buscar titulo..."
-        [(ngModel)]="searchTitulo"
-        (ngModelChange)="filterTitulo($event)"
-      >
-    </div>
-    <br><br> -->
-
-      <!-- <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class=" button-spacing bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-xs px-3 py-1.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-        Genero
-        <svg class="w-2 h-2 ms-2 svg-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-        </svg>
-      </button>
-
-
-      <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Accion</a>
-            </li>
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Terror</a>
-            </li>
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Fantasia</a>
-            </li>
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Comedia</a>
-            </li>
-          </ul>
-      </div>
-
-
-      <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHoverEditorial" data-dropdown-trigger="hover" class=" button-spacing text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-xs px-3 py-1.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-        Editorial
-        <svg class="w-2 h-2 ms-2 svg-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-        </svg>
-      </button>
-
-
-      <div id="dropdownHoverEditorial" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Gente nueva</a>
-            </li>
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Fruta</a>
-            </li>
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Fruta 2</a>
-            </li>
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Fruta 3</a>
-            </li>
-          </ul>
-      </div> -->
 
       <p class="clasep">Buscar por...</p>
  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree custom-tree">
 
-
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+<mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+  <span (click)="onNodeClick($event, node)" style="cursor:pointer;" class="tree-node">
+    {{node.name}}
+  </span>
+</mat-tree-node>
+<mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild" [class.mat-tree-node-expanded]="treeControl.isExpanded(node)">
+  <div class="mat-tree-node">
+    <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{treeControl.isExpanded(node)? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+    </button>
     <span (click)="onNodeClick($event, node)" style="cursor:pointer;" class="tree-node">
       {{node.name}}
     </span>
-  </mat-tree-node>
-  <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild" [class.mat-tree-node-expanded]="treeControl.isExpanded(node)">
-    <div class="mat-tree-node">
-      <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
-        <mat-icon class="mat-icon-rtl-mirror">
-          {{treeControl.isExpanded(node)? 'expand_more' : 'chevron_right'}}
-        </mat-icon>
-      </button>
-      <span (click)="onNodeClick($event, node)" style="cursor:pointer;" class="tree-node">
-        {{node.name}}
-      </span>
-    </div>
-    <div [class.example-tree-invisible]="treeControl.isExpanded(node)" role="group">
-      <ng-container matTreeNodeOutlet></ng-container>
-    </div>
-  </mat-nested-tree-node>
+  </div>
+  <div [class.example-tree-invisible]="treeControl.isExpanded(node)" role="group">
+    <ng-container matTreeNodeOutlet></ng-container>
+  </div>
+</mat-nested-tree-node>
 </mat-tree>
 
-<!-- FUNCIONALIDAD FLOTANTE EN EL MENU EN DESARROLLO -->
-<!-- <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree custom-tree">
-        <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-          <div class="tree-node" (mouseenter)="showMenu(node)" (mouseleave)="hideMenu(node)">
-            {{node.name}}
-            <div class="dropdown-menu" *ngIf="node.showMenu">
-              <ul>
-                <li><a href="#">Opción 1</a></li>
-                <li><a href="#">Opción 2</a></li>
-                <li><a href="#">Opción 3</a></li>
-              </ul>
-            </div>
-          </div>
-        </mat-tree-node>
-        <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild" [class.mat-tree-node-expanded]="treeControl.isExpanded(node)">
-          <div class="mat-tree-node" (mouseenter)="showMenu(node)" (mouseleave)="hideMenu(node)">
-            <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
-              <mat-icon class="mat-icon-rtl-mirror">
-                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-              </mat-icon>
-            </button>
-            <span class="tree-node">
-              {{node.name}}
-              <div class="dropdown-menu" *ngIf="node.showMenu">
-                <ul>
-                  <li><a href="#">Opción 1</a></li>
-                  <li><a href="#">Opción 2</a></li>
-                  <li><a href="#">Opción 3</a></li>
-                </ul>
-              </div>
-            </span>
-          </div>
-          <div [class.example-tree-invisible]="!treeControl.isExpanded(node)" role="group">
-            <ng-container matTreeNodeOutlet></ng-container>
-          </div>
-        </mat-nested-tree-node>
-      </mat-tree> -->
       <p (click)="mostrarTodos()" class="clasep">Mostrar Todos</p>
     </div>
   </div> <br><br>

@@ -41,7 +41,7 @@ export class ListarConTablaComponent {
 
   filter(query: string) {
     this.filteredLibros = this.libros.filter(libro =>
-      libro.titulo.toLowerCase().includes(query.toLowerCase())
+      libro.titulo &&libro.titulo.toLowerCase().includes(query.toLowerCase())
     );
     this.totalItems = this.filteredLibros.length;
     this.currentPage = 0;

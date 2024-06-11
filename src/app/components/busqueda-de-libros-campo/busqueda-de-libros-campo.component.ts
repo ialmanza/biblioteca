@@ -69,12 +69,12 @@ export class BusquedaDeLibrosCampoComponent {
   filteredLibros: Libro[] = [];
   searchTerm: string = '';
   displayedLibros: Libro[] = [];
-  searchTitulo: string = '';
 
   pageSizeOptions = [5, 10, 20];
   pageSize = this.pageSizeOptions[0];
   currentPage = 0;
   totalItems = 0;
+
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource<FoodNode>();
   shoeMenu?: boolean = false;
@@ -92,6 +92,8 @@ export class BusquedaDeLibrosCampoComponent {
     });
   }
 
+  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
+
   filter(query: string) {
     this.filteredLibros = this.libros.filter(libro =>
       // libro.titulo.toLowerCase().includes(query.toLowerCase()) ||
@@ -106,7 +108,7 @@ export class BusquedaDeLibrosCampoComponent {
 
   filterTitulo(query: string) {
     this.filteredLibros = this.libros.filter(libro =>
-      libro.titulo.toLowerCase().includes(query.toLowerCase())
+     libro.titulo && libro.titulo.toLowerCase().includes(query.toLowerCase())
     );
     this.totalItems = this.filteredLibros.length;
     this.currentPage = 0;
@@ -149,7 +151,6 @@ export class BusquedaDeLibrosCampoComponent {
     return Math.ceil(this.totalItems / this.pageSize);
   }
 
-  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
 
   onNodeClick(event: MouseEvent,node: FoodNode) {
     const lastWord = node.name.split(' ').pop();
@@ -160,20 +161,14 @@ export class BusquedaDeLibrosCampoComponent {
 
   search(term: string) {
     console.log(`Searching for: ${term}`);
-    // this.filteredLibros = this.libros.filter(libro =>libro.editorial.toLowerCase().includes(term.toLowerCase()));
-
-    // this.totalItems = this.filteredLibros.length;
-    // this.currentPage = 0;
-    // this.updateDisplayedLibros();
     this.filteredLibros = this.libros.filter(libro =>
-      libro.titulo.toLowerCase().includes(term.toLowerCase()) ||
-      libro.primerautor.toLowerCase().includes(term.toLowerCase()) ||
-      libro.genero.toLowerCase().includes(term.toLowerCase()) ||
-      libro.editorial.toLowerCase().includes(term.toLowerCase()) ||
-    libro.fechapublicacion.toLowerCase().includes(term.toLowerCase()));
+      libro.editorial && libro.editorial.toLowerCase().includes(term.toLowerCase())
+    );
+
     this.totalItems = this.filteredLibros.length;
     this.currentPage = 0;
     this.updateDisplayedLibros();
+
   }
 
   showMenu(node: FoodNode) {
