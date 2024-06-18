@@ -6,14 +6,13 @@ import { Libro } from '../../models/Libro';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from '../../pipes/filter.pipe';
-import { DialogContentExampleDialog } from "../ventana-modal-mostrar-libro/ventana-modal-mostrar-libro.component";
 
 @Component({
     selector: 'app-listarlibros',
     standalone: true,
     templateUrl: './listarlibros.component.html',
     styleUrl: './listarlibros.component.css',
-    imports: [LibroComponent, CommonModule, FormsModule, FilterPipe, DialogContentExampleDialog]
+    imports: [LibroComponent, CommonModule, FormsModule, FilterPipe]
 })
 export class ListarlibrosComponent implements OnInit {
   libros: Libro[] = [];
