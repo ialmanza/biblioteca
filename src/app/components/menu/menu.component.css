@@ -1,0 +1,11 @@
+/* Estilo para el botón "Menu" */
+.navbar button.mat-button {
+  font-size: 1.2em; /* Ajusta el tamaño de la fuente */
+  color: white !important; /* Color blanco para el texto */
+}
+
+/* Estilo para el texto del botón "Menu" cuando se pasa el mouse sobre él */
+.navbar button.mat-button:hover {
+  color: black !important; /* Cambia el color del texto a negro al pasar el mouse sobre él */
+}
+

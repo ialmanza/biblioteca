@@ -3,69 +3,71 @@ import { ListarlibrosComponent } from '../listarlibros/listarlibros.component';
 import { LibrosServicioService } from '../../services/libros-servicio.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-crear-libro',
   standalone: true,
-  imports: [ ListarlibrosComponent, CommonModule ],
+  imports: [ ListarlibrosComponent, CommonModule, FormsModule ],
   providers: [LibrosServicioService],
   templateUrl: './crear-libro.component.html',
-  styleUrl: './crear-libro.component.css'
+  styleUrls: ['./crear-libro.component.css']
 })
-export class CrearLibroComponent {
+export class CrearLibroComponent implements OnInit {
   errorMessage: string = '';
-  mostrar: boolean;
 
-  constructor(private librosService: LibrosServicioService, private router: Router) {
-    this.mostrar = false;
-  }
+  libro: any = {
+    titulo: '',
+    isbn: '',
+    primerautor: '',
+    segundoautor: '',
+    tercerautor: '',
+    fechapublicacion: '',
+    editorial: '',
+    genero: '',
+    paginas: '',
+    descripcion: ''
+  };
+
+  constructor(private librosService: LibrosServicioService, private router: Router) {}
 
   ngOnInit() {}
 
-  addLibro(titulo:HTMLInputElement,isbn:HTMLInputElement, primerautor:HTMLInputElement, segundoautor:HTMLInputElement, tercerautor:HTMLInputElement, fechapublicacion:HTMLInputElement, editorial:HTMLSelectElement, genero:HTMLSelectElement, paginas:HTMLInputElement,descripcion:HTMLTextAreaElement) {
-    let editorialValue = editorial.value === "seleccione"? "" : editorial.value;
-    let generoValue = genero.value === "seleccione"? "" : genero.value;
-
-    if (editorialValue === "" || generoValue === "") {
-      this.errorMessage = ("No se pueden dejar campos vacíos para 'Editorial' o 'Género'.");
-      return; // Retorna temprano si alguna de estas condiciones es verdadera
+  addLibro() {
+    if (!this.libro.editorial || !this.libro.genero) {
+      this.errorMessage = "No se pueden dejar campos vacíos para 'Editorial' o 'Género'.";
+      return;
     }
     const id = Date.now().toString();
-      this.librosService.addLibro({
-        id,
-        titulo: titulo.value,
-        isbn: isbn.value,
-        primerautor: primerautor.value,
-        segundoautor: segundoautor.value,
-        tercerautor: tercerautor.value,
-        fechapublicacion: fechapublicacion.value,
-        editorial: editorial.value,
-        genero: genero.value,
-        paginas: paginas.value,
-        descripcion: descripcion.value,
-        hide: true,
-      });
-
-      titulo.value = '';
-      isbn.value = '';
-      primerautor.value = '';
-      segundoautor.value = '';
-      tercerautor.value = '';
-      fechapublicacion.value = '';
-      editorial.value = '';
-      genero.value = '';
-      paginas.value = '';
-      descripcion.value = '';
-      titulo.focus();
-      return false;
-
-    }
-
-    onSubmit(event: Event, titulo: HTMLInputElement, isbn: HTMLInputElement, primerautor: HTMLInputElement, segundoautor: HTMLInputElement, tercerautor: HTMLInputElement, fechapublicacion: HTMLInputElement, editorial: HTMLSelectElement, genero: HTMLSelectElement, paginas: HTMLInputElement, descripcion: HTMLTextAreaElement) {
-      event.preventDefault(); //previene el comportamiento por defecto del formulario
-      this.addLibro(titulo, isbn, primerautor, segundoautor, tercerautor, fechapublicacion, editorial, genero, paginas, descripcion);
-      this.router.navigate(['/listar-tabla']);
+    this.librosService.addLibro({
+      id,
+      ...this.libro,
+      hide: true,
+    });
 
 
-    }
+    this.libro = {
+      titulo: '',
+      isbn: '',
+      primerautor: '',
+      segundoautor: '',
+      tercerautor: '',
+      fechapublicacion: '',
+      editorial: '',
+      genero: '',
+      paginas: '',
+      descripcion: ''
+    };
+  }
+
+  onSubmit(event: Event) {
+    event.preventDefault();
+    this.addLibro();
+    this.router.navigate(['/listar-tabla']);
+  }
+
+  onClick() {
+    this.router.navigate(['/listar-tabla']);
+  }
 }
+

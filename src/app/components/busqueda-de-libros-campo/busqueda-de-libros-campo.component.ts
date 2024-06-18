@@ -5,7 +5,6 @@ import { Libro } from '../../models/Libro';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from '../../pipes/filter.pipe';
-import { DialogContentExampleDialog } from "../ventana-modal-mostrar-libro/ventana-modal-mostrar-libro.component";
 import { DialogContentEditExampleDialog } from '../ventana-modal-editar-libro/ventana-modal-editar-libro.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAnimationsExampleDialog } from '../ventana-modal/ventana-modal.component';
@@ -14,6 +13,7 @@ import {NestedTreeControl} from '@angular/cdk/tree';
 import {MatTreeNestedDataSource, MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import * as XLSX from 'xlsx';
 
 
 interface FoodNode {
@@ -61,7 +61,7 @@ const TREE_DATA: FoodNode[] = [
     standalone: true,
     templateUrl: './busqueda-de-libros-campo.component.html',
     styleUrl: './busqueda-de-libros-campo.component.css',
-    imports: [LibroComponent, CommonModule, FormsModule, FilterPipe, DialogContentExampleDialog, DialogContentEditExampleDialog, DialogAnimationsExampleDialog,
+    imports: [LibroComponent, CommonModule, FormsModule, FilterPipe, DialogContentEditExampleDialog, DialogAnimationsExampleDialog,
       MatTreeModule, MatIconModule, MatButtonModule],
 })
 export class BusquedaDeLibrosCampoComponent {
@@ -69,12 +69,12 @@ export class BusquedaDeLibrosCampoComponent {
   filteredLibros: Libro[] = [];
   searchTerm: string = '';
   displayedLibros: Libro[] = [];
-  searchTitulo: string = '';
 
   pageSizeOptions = [5, 10, 20];
   pageSize = this.pageSizeOptions[0];
   currentPage = 0;
   totalItems = 0;
+
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource<FoodNode>();
   shoeMenu?: boolean = false;
@@ -92,13 +92,11 @@ export class BusquedaDeLibrosCampoComponent {
     });
   }
 
+  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
+
   filter(query: string) {
     this.filteredLibros = this.libros.filter(libro =>
-      // libro.titulo.toLowerCase().includes(query.toLowerCase()) ||
-      // libro.primerautor.toLowerCase().includes(query.toLowerCase()) ||
-      // libro.genero.toLowerCase().includes(query.toLowerCase()) ||
-      libro.editorial.toLowerCase().includes(query.toLowerCase())  /*||
-    libro.fechapublicacion.toLowerCase().includes(query.toLowerCase()));*/);
+      libro.editorial && libro.editorial.toLowerCase().includes(query.toLowerCase()));
     this.totalItems = this.filteredLibros.length;
     this.currentPage = 0;
     this.updateDisplayedLibros();
@@ -106,7 +104,7 @@ export class BusquedaDeLibrosCampoComponent {
 
   filterTitulo(query: string) {
     this.filteredLibros = this.libros.filter(libro =>
-      libro.titulo.toLowerCase().includes(query.toLowerCase())
+     libro.titulo && libro.titulo.toLowerCase().includes(query.toLowerCase())
     );
     this.totalItems = this.filteredLibros.length;
     this.currentPage = 0;
@@ -149,7 +147,6 @@ export class BusquedaDeLibrosCampoComponent {
     return Math.ceil(this.totalItems / this.pageSize);
   }
 
-  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
 
   onNodeClick(event: MouseEvent,node: FoodNode) {
     const lastWord = node.name.split(' ').pop();
@@ -160,20 +157,20 @@ export class BusquedaDeLibrosCampoComponent {
 
   search(term: string) {
     console.log(`Searching for: ${term}`);
-    // this.filteredLibros = this.libros.filter(libro =>libro.editorial.toLowerCase().includes(term.toLowerCase()));
-
-    // this.totalItems = this.filteredLibros.length;
-    // this.currentPage = 0;
-    // this.updateDisplayedLibros();
     this.filteredLibros = this.libros.filter(libro =>
-      libro.titulo.toLowerCase().includes(term.toLowerCase()) ||
-      libro.primerautor.toLowerCase().includes(term.toLowerCase()) ||
-      libro.genero.toLowerCase().includes(term.toLowerCase()) ||
-      libro.editorial.toLowerCase().includes(term.toLowerCase()) ||
-    libro.fechapublicacion.toLowerCase().includes(term.toLowerCase()));
+      libro.editorial && libro.editorial.toLowerCase().includes(term.toLowerCase()) ||
+      libro.fechapublicacion && libro.fechapublicacion.toLowerCase().includes(term.toLowerCase()) ||
+      libro.genero && libro.genero.toLowerCase().includes(term.toLowerCase()) ||
+      libro.primerautor && libro.primerautor.toLowerCase().includes(term.toLowerCase()) ||
+      libro.segundoautor && libro.segundoautor.toLowerCase().includes(term.toLowerCase()) ||
+      libro.tercerautor && libro.tercerautor.toLowerCase().includes(term.toLowerCase()) ||
+      libro.titulo && libro.titulo.toLowerCase().includes(term.toLowerCase())
+    );
+
     this.totalItems = this.filteredLibros.length;
     this.currentPage = 0;
     this.updateDisplayedLibros();
+
   }
 
   showMenu(node: FoodNode) {
@@ -183,4 +180,34 @@ export class BusquedaDeLibrosCampoComponent {
   hideMenu(node: FoodNode) {
     node.showMenu = false;
   }
+
+  mostrarTodos() {
+    this.filteredLibros = this.libros;
+    this.totalItems = this.libros.length;
+    this.currentPage = 0;
+    this.updateDisplayedLibros();
+  }
+
+  exportToExcel(): void {
+    const filteredData = this.filteredLibros.map(libro => {
+      const { titulo, isbn, primerautor, segundoautor, tercerautor, fechapublicacion, editorial, genero, paginas, descripcion, ...rest } = libro;
+      return {
+        Título: titulo,
+        ISBN: isbn,
+        'Primer autor': primerautor,
+        'Segundo autor': segundoautor,
+        'Tercer autor': tercerautor,
+        'Fecha de publicación': fechapublicacion,
+        Editorial: editorial,
+        Género: genero,
+        Páginas: paginas,
+        'Campo adicional': descripcion
+      };
+    });
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(filteredData);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Libros');
+    XLSX.writeFile(wb, 'Libros.xlsx');
+  }
+
 }

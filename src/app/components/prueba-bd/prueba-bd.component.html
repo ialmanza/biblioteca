@@ -1,0 +1,72 @@
+<div class="container">
+  <h2>Adicionar Libro</h2>
+  <form (ngSubmit)="onSubmit()" #libroForm="ngForm">
+    <div class="form-group">
+      <label for="Titulo">Título</label>
+      <input type="text" class="form-control" id="Titulo" required [(ngModel)]="libro.Titulo" name="Titulo" #Titulo="ngModel">
+      <div [hidden]="Titulo.valid || Titulo.pristine" class="alert alert-danger">
+        Título es requerido.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="ISBN">ISBN</label>
+      <input type="number" class="form-control" id="ISBN" required [(ngModel)]="libro.ISBN" name="ISBN" #ISBN="ngModel">
+      <div [hidden]="ISBN.valid || ISBN.pristine" class="alert alert-danger">
+        ISBN es requerido.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Primer_autor">Primer Autor</label>
+      <input type="text" class="form-control" id="Primer_autor" required [(ngModel)]="libro.Primer_autor" name="Primer_autor" #Primer_autor="ngModel">
+      <div [hidden]="Primer_autor.valid || Primer_autor.pristine" class="alert alert-danger">
+        Primer Autor es requerido.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Segundo_autor">Segundo Autor</label>
+      <input type="text" class="form-control" id="Segundo_autor" [(ngModel)]="libro.Segundo_autor" name="Segundo_autor">
+    </div>
+    <div class="form-group">
+      <label for="Tercer_autor">Tercer Autor</label>
+      <input type="text" class="form-control" id="Tercer_autor" [(ngModel)]="libro.Tercer_autor" name="Tercer_autor">
+    </div>
+    <div class="form-group">
+      <label for="Fecha_de_publicacion">Fecha de Publicación</label>
+      <input type="date" class="form-control" id="Fecha_de_publicacion" required [(ngModel)]="libro.Fecha_de_publicacion" name="Fecha_de_publicacion" #Fecha_de_publicacion="ngModel">
+      <div [hidden]="Fecha_de_publicacion.valid || Fecha_de_publicacion.pristine" class="alert alert-danger">
+        Fecha de Publicación es requerida.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Editorial">Editorial</label>
+      <input type="text" class="form-control" id="Editorial" required [(ngModel)]="libro.Editorial" name="Editorial" #Editorial="ngModel">
+      <div [hidden]="Editorial.valid || Editorial.pristine" class="alert alert-danger">
+        Editorial es requerida.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Genero">Género</label>
+      <input type="text" class="form-control" id="Genero" required [(ngModel)]="libro.Genero" name="Genero" #Genero="ngModel">
+      <div [hidden]="Genero.valid || Genero.pristine" class="alert alert-danger">
+        Género es requerido.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Paginas">Páginas</label>
+      <input type="number" class="form-control" id="Paginas" required [(ngModel)]="libro.Paginas" name="Paginas" #Paginas="ngModel">
+      <div [hidden]="Paginas.valid || Paginas.pristine" class="alert alert-danger">
+        Páginas es requerido.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Campo_adicional">Campo Adicional</label>
+      <input type="text" class="form-control" id="Campo_adicional" [(ngModel)]="libro.Campo_adicional" name="Campo_adicional">
+    </div> <br>
+    <div class="form-group">
+      <label for="Descargar"></label>
+      <input type="file" class="form-control" id="Descargar" placeholder="Descargar (.epub)" (change)="onFileSelected($event)">
+    </div> <br>
+    <button type="submit" class="btn btn-primary" [disabled]="!libroForm.form.valid">Adicionar</button>
+  </form>
+</div>
+

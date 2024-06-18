@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { DialogAnimationsExampleDialog, DialogComponent } from '../ventana-modal/ventana-modal.component';
 import { MatDialog, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { DialogContentExampleDialog } from '../ventana-modal-mostrar-libro/ventana-modal-mostrar-libro.component';
 import { DialogContentEditExampleDialog } from '../ventana-modal-editar-libro/ventana-modal-editar-libro.component';
 
 @Component({
@@ -36,16 +35,6 @@ export class LibroComponent {
     });
   }
 
-  openMostrarDialog(libro: Libro): void {
-    const dialogRef = this.dialog.open(DialogContentExampleDialog, {
-      width: '250px',
-      data: libro
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
 
   toggleEdit() {
     this.editing = !this.editing;
